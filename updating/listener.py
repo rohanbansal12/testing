@@ -18,7 +18,7 @@ parser.add_args("--repository", type=str, default="rohanbansal12/testing", help=
 parser.add_args(
     "--access_token_var",
     type=str,
-    default="github_access_token",
+    default="GITHUB_ACCESS_TOKEN",
     help="Environment variable name of github access token",
 )
 parser.add_args(
