@@ -387,15 +387,16 @@ h2 {
 }
 
 table {
+  margin-top: 50px;
   width: 80%;
   table-layout: fixed;
+  border: 1px solid black !important;
 }
+
 .tbl-header {
   background-color: rgba(255, 255, 255, 0.3);
 }
 .tbl-content {
-  height: 300px;
-  overflow-x: auto;
   margin-top: 0px;
   border: 1px solid rgba(255, 255, 255, 0.3);
 }
@@ -414,4 +415,9 @@ td {
   font-size: 12px;
   color: black;
   border-bottom: solid 1px black;
+  border: 1px solid black !important;
+}
+
+tr {
+  border: 1px solid black !important;
 }
