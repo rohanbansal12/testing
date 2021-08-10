@@ -5,7 +5,7 @@ $(document).ready(function () {
 
   $("#tab_metrics").click(function () {
     var current_selected_tab = $("section.is-active");
-    current_selected_tab.find(".table_tbody").remove();
+    current_selected_tab.find(".table100").remove();
     $("#metrics-spinner").show();
     const Url =
       "https://quf1ev88a9.execute-api.us-east-2.amazonaws.com/default/return_crystal_types";
@@ -23,60 +23,48 @@ $(document).ready(function () {
     };
 
     (async () => {
-      let ranked_articles = await fetch(Url, payLoad)
+      let ranked_types = await fetch(Url, payLoad)
         .then((response) => response.json())
         .then((data) => {
           return data;
         });
-      console.log(ranked_articles);
       var grand_html = "";
-      ranked_articles.forEach(function (article) {
-        grand_html += "<tr>";
-        // grand_html += '<td class="logit">';
-        // grand_html += article["logit"].toString();
-        // grand_html += "</td>";
-        grand_html +=
-          '<td class="title mdl-data-table__cell--non-numeric"><a class="article_link" href="';
-        grand_html += article["link"];
-        grand_html += '">';
-        grand_html += article["title"];
-        // grand_html += "<br></br>";
-        grand_html += '<p class="publication">';
-        grand_html += article["publication"];
-        grand_html += "</p>";
-        grand_html += '<p class="top_words">';
-        article["top_words"].forEach(function (word) {
-          if (word.length > 2 && isNaN(word)) {
-            grand_html += word;
-            grand_html += ",";
-          }
-        });
-        grand_html = grand_html.slice(0, -1);
-        grand_html += "</p>";
-        grand_html += '<p class="least_words">';
-        article["least_words"].forEach(function (word) {
-          if (word.length > 2 && isNaN(word)) {
-            grand_html += word;
-            grand_html += ",";
-          }
-        });
-        grand_html = grand_html.slice(0, -1);
-        grand_html += "</p>";
-        grand_html += "</td>";
-        grand_html += "</tr>";
+      grand_html += `<div class="table100">
+                    <table>
+                    <thead>
+                    <tr class="table100-head">
+                        <th class="column1">Crystal Type</th>
+                        <th class="column2">Rarity</th>
+                        <th class="column3">Last Sale (Weight)</th>
+                        <th class="column4">Last Sale (Ξ)</th>
+                        <th class="column5">Total Weight</th>
+                        <th class="column6">Unit Price</th>
+                        <th class="column7">Implied MC (Ξ)</th>
+                    </tr>
+                </thead>
+                <tbody>`;
+      ranked_types.forEach(function (item) {
+        var ppu = item["last_sale"]["price"] / item["last_sale"]["weight"];
+        var mc = item["total_weight"] * ppu;
+        var current_html = "<tr>";
+        current_html += '<td class="column1">${item["crystal_type"]}</td>';
+        current_html += '<td class="column2">${item["rarity_percentage"]}</td>';
+        current_html +=
+          '<td class="column3">${item["last_sale"]["weight"]}</td>';
+        current_html +=
+          '<td class="column4">${item["last_sale"]["price"]}</td>';
+        current_html += '<td class="column5">${item["total_weight"]}</td>';
+        current_html += '<td class="column6">${ppu.toFixed(8)}</td>';
+        current_html += '<td class="column6">${mc.toFixed(1)}</td>';
+        current_html += "</tr>";
+        grand_html += current_html;
       });
-      grand_html += "</tbody>";
-      grand_html += "</table>";
-      var prepend = `<table class="mdl-data-table mdl-js-data-table rank_results">
-        <thead>
-        <tr>
-        </tr>
-        </thead>`;
-      var final_html_str = prepend + grand_html;
+      grand_html += "</tbody></table></div>";
       current_selected_tab.find(".spinner").hide();
-      current_selected_tab.find(".table-wrapper").append(final_html_str);
+      current_selected_tab.find(".wrap-table100").append(grand_html);
     })();
   });
+
   $(".toggle_words").click(function () {
     console.log($(this).siblings(".top_words").text());
     $(this).siblings(".top_words").toggle(500);
