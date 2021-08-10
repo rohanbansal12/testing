@@ -1,7 +1,7 @@
 /* Phone screen */
 @media screen and (max-width: 479px) {
   .input_div {
-    padding-top: 10px;
+    padding-top: 50px;
     padding-bottom: 10px;
     display: flex;
     align-items: center;
@@ -152,11 +152,11 @@
 
 /* Full-size screen */
 .input_div {
-  padding-top: 10px;
+  padding-top: 50px;
   padding-bottom: 10px;
   display: flex;
   align-items: center;
-  width: 70%;
+  width: 30%;
   margin: auto;
 }
 .table-wrapper {
@@ -310,7 +310,7 @@ h4 {
 }
 
 .about_title {
-  margin: 50px;
+  margin-top: 50px;
 }
 
 .about-container {
@@ -332,7 +332,7 @@ h4 {
 
 h1 {
   text-align: center;
-  margin: 50px;
+  margin: 10px;
   font-size: 40px;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   margin-top: 75px;
