@@ -10,7 +10,7 @@ $(document).ready(function () {
     const Url =
       "https://quf1ev88a9.execute-api.us-east-2.amazonaws.com/default/return_crystal_types";
     var Data = {
-      type: "type",
+      type_stuff: "type",
       other: "other",
     };
     var payLoad = {

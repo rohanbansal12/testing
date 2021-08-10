@@ -306,7 +306,7 @@ table td {
 
 h4 {
   text-align: center;
-  margin: 50px;
+  margin: 50px !important;
 }
 
 .about_title {
@@ -323,7 +323,7 @@ h4 {
 }
 
 .links {
-  margin-top: 100px;
+  margin-top: 50px;
 }
 
 .about_header {
@@ -416,4 +416,11 @@ p.bottom {
   justify-content: center;
   margin: 1px !important;
   padding: 10px 10px;
+}
+
+hr {
+  margin-top: 100px;
+  width: 75%;
+  margin-left: auto;
+  margin-right: auto;
 }
