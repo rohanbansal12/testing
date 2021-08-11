@@ -185,8 +185,8 @@ tbody tr {
 }
 
 tbody tr:hover {
-  color: white;
-  background-color: #4d7ab1;
+  color: #555555;
+  background-color: #f5f5f5;
   cursor: pointer;
 }
 
