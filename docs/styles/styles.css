@@ -187,15 +187,15 @@ table td {
 }
 
 .about_description {
-  width: 80%;
+  width: 100%;
   font-size: 20px;
   margin-top: 25px;
 }
 
 .about_image {
-  display: inline-block;
   height: 100%;
   vertical-align: middle;
+  float: right;
 }
 
 .about-container {
@@ -222,7 +222,7 @@ table td {
 }
 
 .about-header-content {
-  padding-left: 15%;
+  padding-left: 20%;
   padding-right: 15%;
 }
 
@@ -236,8 +236,8 @@ h1 {
 
 .faq_div {
   margin-top: 25px;
-  margin-left: 30%;
-  margin-right: 30%;
+  margin-left: 25%;
+  margin-right: 25%;
   margin-bottom: 50px;
 }
 
@@ -316,7 +316,7 @@ p.bottom {
 }
 
 hr {
-  margin-top: 100px;
+  margin-top: 50px;
   width: 75%;
   margin-left: auto;
   margin-right: auto;
