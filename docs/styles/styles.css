@@ -4,12 +4,13 @@
     width: 80%;
     text-align: center;
     font-size: 50px;
+    margin: 0 auto;
   }
 
   .about_description {
     width: 80%;
     font-size: 20px;
-    margin-top: 25px;
+    margin: 25px auto;
     text-align: center;
   }
 
@@ -33,17 +34,13 @@
   }
 
   .about-header {
-    padding-top: 50px;
-    width: 60%;
-    display: inline-block;
-    height: 100%;
-    vertical-align: middle;
-    padding-bottom: 50px;
+    justify-content: center;
+    align-items: center;
     margin: 0 auto;
   }
 
   .about-header-content {
-    padding-left: 25%;
+    padding-left: 15%;
     padding-right: 15%;
   }
 
