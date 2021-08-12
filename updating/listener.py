@@ -41,7 +41,7 @@ event_querystring = {
     "event_type": "successful",
     "only_opensea": "false",
     "offset": "0",
-    "limit": "20",
+    "limit": "50",
 }
 
 asset_url = "https://api.opensea.io/api/v1/assets"
@@ -52,7 +52,9 @@ last_date = args.start_date
 new_changes = 0
 
 while True:
+    offset = 0
     event_querystring["occurred_after"] = last_date.isoformat()
+    event_querystring["offset"] = offset
     response = requests.request("GET", event_url, headers=headers, params=event_querystring).json()
     events = response.get("asset_events", [])
     if not events:
@@ -61,7 +63,15 @@ while True:
         time.sleep(180)
     else:
         last_date = datetime.strptime(events[0]["transaction"]["timestamp"], "%Y-%m-%dT%H:%M:%S") + timedelta(seconds=1)
-
+        while True:
+            offset += 50
+            event_querystring["offset"] = offset
+            response = requests.request("GET", event_url, headers=headers, params=event_querystring).json()
+            more_events = response.get("asset_events", [])
+            if not more_events:
+                break
+            events.extend(more_events)
+        print(len(events))
         for event in events:
             current_token_id = event["asset"]["token_id"]
             crystal_type = 0
@@ -86,7 +96,6 @@ while True:
             current_last_sale["price"] = Decimal(int(event["total_price"])) / Decimal((10 ** 18))
             current_last_sale["weight"] = crystal_weight
 
-            print(crystal_type)
             print(current_last_sale)
 
             update_type_table_response = update_type_table(type_table, crystal_type, current_last_sale)
@@ -112,7 +121,8 @@ while True:
                 sorted_data.append(cleaned_data[idx])
             g = Github(os.environ[args.access_token_var])
             repo = g.get_repo(args.repository)
-            new_table_html = generate_type_table_html(cleaned_data)
+            new_table_html = generate_type_table_html(sorted_data)
             commit_response = update_type_table_repo(repo, "docs/index.html", new_table_html)
+            print(commit_response)
             new_changes = 0
         time.sleep(300)
