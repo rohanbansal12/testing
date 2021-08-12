@@ -213,7 +213,7 @@ table td {
 }
 
 .about-header {
-  padding-top: 50px;
+  padding-top: 88px;
   width: 50%;
   display: inline-block;
   height: 100%;
@@ -328,7 +328,7 @@ hr {
 }
 
 /* Phone screen */
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 1575px) {
   .about_title {
     text-align: center;
     font-size: 50px;
@@ -344,6 +344,7 @@ hr {
   .about_image {
     display: block;
     margin: auto;
+    float: none;
   }
 
   .about_crystal_picture {
