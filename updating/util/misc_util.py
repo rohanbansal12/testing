@@ -1,11 +1,12 @@
 from datetime import datetime
+import copy
 
 
 def clean_type_entries(entries):
     cleaned_data = []
     rarity_list = []
     for idx, item in enumerate(entries):
-        current_dict = {}
+        current_dict = copy.deepcopy(item)
         rarity_list.append(item["rarity_rank"])
         current_dict["total_weight"] = float(item["total_weight"])
         current_dict["rarity_rank"] = float(item["rarity_rank"])

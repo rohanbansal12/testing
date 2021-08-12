@@ -14,14 +14,16 @@ from util.misc_util import clean_type_entries, parse_iso_date
 from util.aws_util import update_type_table
 
 parser = argparse.ArgumentParser(description="Listen for new sale events and update crystal type table")
-parser.add_args("--repository", type=str, default="rohanbansal12/testing", help="Repository to update index.html file")
-parser.add_args(
+parser.add_argument(
+    "--repository", type=str, default="rohanbansal12/testing", help="Repository to update index.html file"
+)
+parser.add_argument(
     "--access_token_var",
     type=str,
     default="GITHUB_ACCESS_TOKEN",
     help="Environment variable name of github access token",
 )
-parser.add_args(
+parser.add_argument(
     "--start_date",
     default=datetime.now().replace(microsecond=0),
     type=parse_iso_date,
@@ -55,7 +57,8 @@ while True:
     events = response.get("asset_events", [])
     if not events:
         last_date = datetime.now().replace(microsecond=0)
-        time.sleep(60)
+        print("No events this time")
+        time.sleep(180)
     else:
         last_date = datetime.strptime(events[0]["transaction"]["timestamp"], "%Y-%m-%dT%H:%M:%S") + timedelta(seconds=1)
 
@@ -83,10 +86,13 @@ while True:
             current_last_sale["price"] = Decimal(int(event["total_price"])) / Decimal((10 ** 18))
             current_last_sale["weight"] = crystal_weight
 
+            print(crystal_type)
+            print(current_last_sale)
+
             update_type_table_response = update_type_table(type_table, crystal_type, current_last_sale)
             if update_type_table_response:
                 new_changes += 1
-                print(update_type_table_response)
+                print(f"{crystal_type} Updated!")
 
         if new_changes >= 3:
             response = type_table.scan()
@@ -109,4 +115,4 @@ while True:
             new_table_html = generate_type_table_html(cleaned_data)
             commit_response = update_type_table_repo(repo, "docs/index.html", new_table_html)
             new_changes = 0
-        time.sleep(60)
+        time.sleep(300)
