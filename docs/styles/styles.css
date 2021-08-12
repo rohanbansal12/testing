@@ -19,6 +19,11 @@
     margin: auto;
   }
 
+  .about_crystal_picture {
+    display: block;
+    margin: 0 auto;
+  }
+
   .about-container {
     margin-top: 50px;
     margin-left: 20%;
@@ -42,6 +47,10 @@
   .about-header-content {
     padding-left: 15%;
     padding-right: 15%;
+  }
+
+  .about-header {
+    width: 100%;
   }
 
   .input_div {
