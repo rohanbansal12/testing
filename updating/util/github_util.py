@@ -1,6 +1,6 @@
 def generate_type_table_html(entries):
     grand_html = """<div class="table100">
-                    <table>
+                    <table id="type_data_table">
                     <thead>
                     <tr class="table100-head">
                         <th class="column1">Crystal Type</th>
