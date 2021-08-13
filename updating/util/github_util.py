@@ -3,13 +3,13 @@ def generate_type_table_html(entries):
                     <table id="type_data_table">
                     <thead>
                     <tr class="table100-head">
-                        <th class="column1">Crystal Type</th>
-                        <th class="column2">Rarity</th>
-                        <th class="column3">Last Sale (Weight)</th>
-                        <th class="column4">Last Sale (Ξ)</th>
-                        <th class="column5">Total Weight</th>
-                        <th class="column6">Unit Price</th>
-                        <th class="column7">Implied MC (Ξ)</th>
+                    <th class="column1"">Crystal Type</th>
+                    <th class=" column2" onclick="sortTable(1)">Rarity</th>
+                    <th class="column3" onclick="sortTable(2)">Last Sale (Weight)</th>
+                    <th class="column4" onclick="sortTable(3)">Last Sale (Ξ)</th>
+                    <th class="column5" onclick="sortTable(4)">Total Weight</th>
+                    <th class="column6" onclick="sortTable(5)">Unit Price</th>
+                    <th class="column7" onclick="sortTable(6)">Implied MC (Ξ)</th>
                     </tr>
                 </thead>
                 <tbody>"""

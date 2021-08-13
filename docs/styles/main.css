@@ -116,7 +116,7 @@ iframe {
 }
 
 .wrap-table100 {
-  width: 90%;
+  width: 75%;
 }
 
 table {
@@ -178,15 +178,15 @@ tbody tr:nth-child(odd) {
 
 tbody tr {
   font-family: OpenSans-Regular;
-  font-size: 18px;
+  font-size: 16px;
   color: black;
   line-height: 1.2;
   font-weight: unset;
 }
 
 tbody tr:hover {
-  color: white;
-  background-color: #4d7ab1;
+  color: black;
+  background-color: #93c4ff;
   cursor: pointer;
 }
 

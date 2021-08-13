@@ -142,8 +142,8 @@
                         </div>
                         <div style="width: 10%">
                             <button id="type_metric_refresh" style="float: right"
-                                class="refresh_button mdl-button mdl-js-button mdl-button--fab mdl-js-ripple-effect mdl-button--colored">
-                                <i class="material-icons">refresh</i>
+                                class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
+                                Refresh
                             </button>
                         </div>
                     </div>
@@ -153,16 +153,16 @@
                         <div class="container-table100">
                             <div class="wrap-table100">
                                 <div class="table100">
-                                    <table>
+                                    <table id="type_data_table">
                                         <thead>
                                             <tr class="table100-head">
-                                                <th class="column1">Crystal Type</th>
-                                                <th class="column2">Rarity</th>
-                                                <th class="column3">Last Sale (Weight)</th>
-                                                <th class="column4">Last Sale (Ξ)</th>
-                                                <th class="column5">Total Weight</th>
-                                                <th class="column6">Unit Price</th>
-                                                <th class="column7">Implied MC (Ξ)</th>
+                                                <th class="column1"">Crystal Type</th>
+                                                <th class=" column2" onclick="sortTable(1)">Rarity</th>
+                                                <th class="column3" onclick="sortTable(2)">Last Sale (mg)</th>
+                                                <th class="column4" onclick="sortTable(3)">Last Sale (Ξ)</th>
+                                                <th class="column5" onclick="sortTable(4)">Weight (mg)</th>
+                                                <th class="column6" onclick="sortTable(5)">Unit Price</th>
+                                                <th class="column7" onclick="sortTable(6)">Implied MC (Ξ)</th>
                                             </tr>
                                         </thead>
                                         <tbody>

@@ -30,10 +30,10 @@ asset_url = "https://api.opensea.io/api/v1/assets"
 asset_querystring = {"order_direction": "desc", "offset": "0", "limit": "20", "collection": "cryptocrystal"}
 
 headers = {"Accept": "application/json"}
-main_path = Path("/home/ubuntu/log/last_date_listener.txt")
+main_path = Path("/home/ubuntu/dat/cryptocrystal/last_date_listener.txt")
 
 if not main_path.is_file():
-    main_path = Path("../../log/last_date_listener.txt")
+    main_path = Path("../../dat/cryptocrystal/last_date_listener.txt")
 
 with open(main_path, "r") as file:
     last_date = parse_iso_date(file.readline())
@@ -112,7 +112,7 @@ else:
         print(commit_response)
         new_changes = 0
 
-with open("/home/ubuntu/log/last_date_listener.txt", "w") as file:
+with open("/home/ubuntu/dat/cryptocrystal/last_date_listener.txt", "w") as file:
     file.write(last_date.isoformat())
     file.write("\n")
     file.write(str(new_changes))
