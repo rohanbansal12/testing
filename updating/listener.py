@@ -9,6 +9,7 @@ import numpy as np
 from github import Github
 import os
 import argparse
+from pathlib import Path
 from util.github_util import generate_type_table_html, update_type_table_repo
 from util.misc_util import clean_type_entries, parse_iso_date
 from util.aws_util import update_type_table
@@ -29,7 +30,12 @@ asset_url = "https://api.opensea.io/api/v1/assets"
 asset_querystring = {"order_direction": "desc", "offset": "0", "limit": "20", "collection": "cryptocrystal"}
 
 headers = {"Accept": "application/json"}
-with open("/home/ubuntu/log/last_date_listener.txt", "r") as file:
+main_path = Path("/home/ubuntu/log/last_date_listener.txt")
+
+if not main_path.is_file():
+    main_path = Path("../../log/last_date_listener.txt")
+
+with open(main_path, "r") as file:
     last_date = parse_iso_date(file.readline())
     new_changes = int(file.readline())
 
