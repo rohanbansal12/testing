@@ -29,6 +29,7 @@
             <div class="mdl-layout__tab-bar mdl-js-ripple-effect">
                 <a href="#fixed-tab-about" class="mdl-layout__tab is-active top_tabs">About</a>
                 <a id="tab_metrics" , href="#fixed-tab-metrics" class="mdl-layout__tab top_tabs">Metrics</a>
+                <a id="tab_calculator" , href="#fixed-tab-calculator" class="mdl-layout__tab top_tabs">Calculator</a>
             </div>
         </header>
         <main class="mdl-layout__content">
@@ -139,12 +140,13 @@
             <section class="mdl-layout__tab-panel" id="fixed-tab-metrics">
                 <div class="page-content">
                     <div class="input_div">
-                        <div class="mdl-textfield mdl-js-textfield" style="display: inline-block; width: 10%">
+                        <div class="mdl-textfield mdl-js-textfield" style="display: inline-block; width: 15%">
                             <input class="mdl-textfield__input" type="text" id="type_search">
-                            <label class="mdl-textfield__label" for="type_search">Type to search</label>
+                            <label class="mdl-textfield__label" for="type_search"><i class="fa fa-search"
+                                    aria-hidden="true"></i>Text:</label>
                         </div>
-                        <h1 style=" margin-left: 25%; width: 30%; display: inline-block; font-weight: 600;"
-                            class="metrics_title">
+                        <h1 style=" margin-left: 20%; width: 30%; display: inline-block;"
+                            class="page_title metrics_title">
                             Crystal Type Metrics
                         </h1>
 
@@ -1076,6 +1078,32 @@
                                 </div>
                             </div>
                         </div>
+                    </div>
+                </div>
+            </section>
+            <section class="mdl-layout__tab-panel" id="fixed-tab-calculator">
+                <div class="page-content">
+                    <div class="input_div">
+                        <h1 style="margin: 0 auto; font-weight: 400;" class="calcualator_title">
+                            Crystal Calculator
+                        </h1>
+                    </div>
+                    <div style="margin: 0 auto">
+                        <form style="text-align: center" action="#">
+                            <div style="display: inline-block; width: 15%" class="mdl-textfield mdl-js-textfield">
+                                <input class="mdl-textfield__input" type="text" pattern="-?[0-9]*(\.[0-9]+)?"
+                                    id="calculator_input">
+                                <label class="mdl-textfield__label" for="calculator_input"><i class="fa fa-search"
+                                        aria-hidden="true"></i> Token ID:</label>
+                                <span class="mdl-textfield__error">Input is not a number!</span>
+                            </div>
+
+                            <button
+                                class="mdl-button mdl-js-button mdl-button--icon mdl-js-ripple-effect mdl-button--colored calculator_button"
+                                id="calculator_button">
+                                <i class="fa fa-arrow-right" aria-hidden="true"></i>
+                            </button>
+                        </form>
                     </div>
                 </div>
             </section>

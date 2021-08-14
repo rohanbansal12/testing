@@ -95,6 +95,11 @@ $(document).ready(function () {
       })
       .hide();
   });
+
+  $("#calculator_button").click(function () {
+    var text = $("#calculator_input").val();
+    console.log(text);
+  });
 });
 
 function sortTable(n) {

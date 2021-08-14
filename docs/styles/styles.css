@@ -31,6 +31,10 @@ th.sticky-header {
   background-color: white;*/
 }
 
+.page_title {
+  font-weight: 200 !important;
+}
+
 .mdl-textfield__input {
   border-bottom: 1px solid rgb(34 41 255 / 40%) !important;
 }
@@ -162,7 +166,7 @@ table td {
 h1 {
   text-align: center;
   margin: 10px;
-  font-size: 48px;
+  font-size: 38px;
   font-family: "Roboto", "Helvetica", "Arial", sans-serif;
   margin-top: 75px;
 }
@@ -258,6 +262,13 @@ hr {
 
 .mdl-layout__content {
   flex: 1 0 auto;
+}
+
+.calculator_button {
+  background: rgb(32, 129, 226) !important;
+  color: white !important;
+  display: inline-block;
+  font-size: 15px;
 }
 
 /* Phone screen */
