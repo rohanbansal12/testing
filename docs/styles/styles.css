@@ -2,10 +2,10 @@
 .input_div {
   padding-top: 50px;
   padding-bottom: 10px;
-  display: flex;
-  align-items: center;
-  width: 80%;
-  margin: auto;
+  width: 75%;
+  margin: 0 auto;
+  padding-left: 30px;
+  padding-right: 30px;
 }
 
 .table-wrapper {
@@ -21,6 +21,14 @@ p {
   margin: 0px;
   font-size: 18px !important;
   font-weight: 500;
+}
+
+th.sticky-header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  /*To not have transparent background.
+  background-color: white;*/
 }
 
 th {

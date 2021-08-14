@@ -13,7 +13,11 @@
     <link rel="stylesheet" href="styles/styles.css">
     <link rel="stylesheet" type="text/css" href="styles/util.css">
     <link rel="stylesheet" type="text/css" href="styles/main.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body>
@@ -135,17 +139,23 @@
             <section class="mdl-layout__tab-panel" id="fixed-tab-metrics">
                 <div class="page-content">
                     <div class="input_div">
-                        <div style="width: 90%; text-align: center">
-                            <h1 style="display: inline" class="metrics_title">
-                                Crystal Type Metrics
-                            </h1>
-                        </div>
-                        <div style="width: 10%">
-                            <button id="type_metric_refresh" style="float: right"
+                        <h1 style=" margin-left: 25%; width: 50%; display: inline-block; font-weight: 600;"
+                            class="metrics_title">
+                            Crystal Type Metrics
+                        </h1>
+
+                        <div class="grouping" style="text-align: right; float: right; height: 100%; padding-top: .8%;">
+                            <button id="type_metric_refresh"
+                                style=" font-size: 14px; background-color: rgb(32, 129, 226); color: black;"
                                 class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent">
-                                Refresh
+                                Refresh <i class="fa fa-repeat" style="font-size: 14px;"></i>
                             </button>
+                            <label style="display: block; font-size: 12px; height: 12px;">Last Refreshed:</label>
+                            <label class="last_refresh_time"
+                                style="display: block; font-size: 12px; height: 12px;"></label>
                         </div>
+
+
                     </div>
                     <div id="metrics-spinner" class="spinner mdl-spinner mdl-js-spinner is-active"
                         style="display:none;"></div>

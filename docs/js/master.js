@@ -1,4 +1,11 @@
 $(document).ready(function () {
+  var today = new Date();
+  var date =
+    today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
+  var time =
+    today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+  $(".last_refresh_time").html(date + "T" + time);
+
   $("a").click(function () {
     $(this).attr("target", "_blank");
   });
@@ -30,16 +37,16 @@ $(document).ready(function () {
         });
       var grand_html = "";
       grand_html += `<div class="table100">
-                    <table>
+                    <table id="type_data_table">
                     <thead>
                     <tr class="table100-head">
-                        <th class="column1">Crystal Type</th>
-                        <th class="column2">Rarity</th>
-                        <th class="column3">Last Sale (Weight)</th>
-                        <th class="column4">Last Sale (Ξ)</th>
-                        <th class="column5">Total Weight</th>
-                        <th class="column6">Unit Price</th>
-                        <th class="column7">Implied MC (Ξ)</th>
+                    <th class="column1"">Crystal Type</th>
+                    <th class=" column2" onclick="sortTable(1)">Rarity</th>
+                    <th class="column3" onclick="sortTable(2)">Last Sale (mg)</th>
+                    <th class="column4" onclick="sortTable(3)">Last Sale (Ξ)</th>
+                    <th class="column5" onclick="sortTable(4)">Weight (mg)</th>
+                    <th class="column6" onclick="sortTable(5)">Unit Price</th>
+                    <th class="column7" onclick="sortTable(6)">Implied MC (Ξ)</th>
                     </tr>
                 </thead>
                 <tbody>`;
@@ -61,6 +68,18 @@ $(document).ready(function () {
 
       current_selected_tab.find(".spinner").hide();
       current_selected_tab.find(".wrap-table100").append(grand_html);
+
+      //Time Refresh
+      var today = new Date();
+      var date =
+        today.getFullYear() +
+        "-" +
+        (today.getMonth() + 1) +
+        "-" +
+        today.getDate();
+      var time =
+        today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+      $(".last_refresh_time").html(date + " " + time);
     })();
   });
 });
