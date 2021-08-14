@@ -41,7 +41,7 @@ $(document).ready(function () {
                     <thead>
                     <tr class="table100-head">
                     <th class="column1"">Crystal Type</th>
-                    <th class=" column2" onclick="sortTable(1)">Rarity</th>
+                    <th class="column2" onclick="sortTable(1)">Rarity</th>
                     <th class="column3" onclick="sortTable(2)">Last Sale (mg)</th>
                     <th class="column4" onclick="sortTable(3)">Last Sale (Ξ)</th>
                     <th class="column5" onclick="sortTable(4)">Weight (mg)</th>
@@ -81,6 +81,19 @@ $(document).ready(function () {
         today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
       $(".last_refresh_time").html(date + " " + time);
     })();
+  });
+
+  var $rows = $("#type_data_table tbody tr");
+  $("#type_search").keyup(function () {
+    var val = $.trim($(this).val()).replace(/ +/g, " ").toLowerCase();
+
+    $rows
+      .show()
+      .filter(function () {
+        var text = $(this).text().replace(/\s+/g, " ").toLowerCase();
+        return !~text.indexOf(val);
+      })
+      .hide();
   });
 });
 

@@ -31,6 +31,10 @@ th.sticky-header {
   background-color: white;*/
 }
 
+.mdl-textfield__input {
+  border-bottom: 1px solid rgb(34 41 255 / 40%) !important;
+}
+
 th {
   color: black !important;
   font-weight: bold !important;
