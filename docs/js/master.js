@@ -35,39 +35,12 @@ $(document).ready(function () {
         .then((data) => {
           return data;
         });
-      var grand_html = "";
-      grand_html += `<div class="table100">
-                    <table id="type_data_table">
-                    <thead>
-                    <tr class="table100-head">
-                    <th class="column1"">Crystal Type</th>
-                    <th class="column2" onclick="sortTable(1)">Rarity</th>
-                    <th class="column3" onclick="sortTable(2)">Last Sale (mg)</th>
-                    <th class="column4" onclick="sortTable(3)">Last Sale (Ξ)</th>
-                    <th class="column5" onclick="sortTable(4)">Weight (mg)</th>
-                    <th class="column6" onclick="sortTable(5)">Unit Price</th>
-                    <th class="column7" onclick="sortTable(6)">Implied MC (Ξ)</th>
-                    </tr>
-                </thead>
-                <tbody>`;
-      ranked_types.forEach(function (item) {
-        var ppu = item["last_sale"]["price"] / item["last_sale"]["weight"];
-        var mc = item["total_weight"] * ppu;
-        var current_html = "<tr>";
-        current_html += `<td class="column1">${item["crystal_type"]}</td>`;
-        current_html += `<td class="column2">${item["rarity_percentage"]}</td>`;
-        current_html += `<td class="column3">${item["last_sale"]["weight"]}</td>`;
-        current_html += `<td class="column4">${item["last_sale"]["price"]}</td>`;
-        current_html += `<td class="column5">${item["total_weight"]}</td>`;
-        current_html += `<td class="column6">${ppu.toFixed(8)}</td>`;
-        current_html += `<td class="column6">${mc.toFixed(1)}</td>`;
-        current_html += "</tr>";
-        grand_html += current_html;
-      });
-      grand_html += "</tbody></table></div>";
+      console.log(ranked_types[0].new_type_table);
 
       current_selected_tab.find(".spinner").hide();
-      current_selected_tab.find(".wrap-table100").append(grand_html);
+      current_selected_tab
+        .find(".wrap-table100")
+        .append(ranked_types[0].new_type_table);
 
       //Time Refresh
       var today = new Date();

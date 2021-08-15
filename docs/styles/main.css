@@ -137,11 +137,11 @@ table th {
 }
 table thead tr {
   height: 60px;
-  background: rgb(32, 129, 226);
+  background: rgb(175 175 175);
   color: white;
 }
 table tbody tr {
-  height: 50px;
+  height: 25px;
 }
 table tbody tr:last-child {
   border: 0;
@@ -185,7 +185,7 @@ tbody tr {
 
 tbody tr:hover {
   color: black;
-  background-color: #93c4ff;
+  background-color: #cce3ff;
   cursor: pointer;
 }
 

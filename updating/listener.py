@@ -10,6 +10,7 @@ from github import Github
 import os
 import argparse
 from pathlib import Path
+import json
 from util.github_util import generate_type_table_html, update_type_table_repo
 from util.misc_util import clean_type_entries, parse_iso_date
 from util.aws_util import update_type_table
@@ -90,24 +91,15 @@ else:
             print(f"{crystal_type} Updated!")
 
     if new_changes >= 5:
-        response = type_table.scan()
-        data = response["Items"]
-
-        while "LastEvaluatedKey" in response:
-            response = type_table.scan(ExclusiveStartKey=response["LastEvaluatedKey"])
-            data.extend(response["Items"])
-
-        rarity_list, cleaned_data = clean_type_entries(data)
-
-        argsorted = list(np.argsort(rarity_list))
-        sorted_data = []
-        for idx in argsorted:
-            if not data[idx]["last_sale"]:
-                continue
-            sorted_data.append(cleaned_data[idx])
+        aws_api_url = "https://quf1ev88a9.execute-api.us-east-2.amazonaws.com/default/return_crystal_types"
+        Data = {
+            "type_stuff": "type",
+            "other": "other",
+        }
+        r = requests.post(aws_api_url, data=Data, headers={"Content-Type": "application/json", "origin": "null"})
+        new_table_html = json.loads(r.content)[0]["new_type_table"]
         g = Github(os.environ["GITHUB_ACCESS_TOKEN"])
         repo = g.get_repo("rohanbansal12/testing")
-        new_table_html = generate_type_table_html(sorted_data)
         commit_response = update_type_table_repo(repo, "docs/index.html", new_table_html)
         print(commit_response)
         new_changes = 0

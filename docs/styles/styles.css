@@ -90,7 +90,7 @@ body {
 
 table tr {
   border-bottom: 2px gray;
-  height: 100px !important;
+  height: 55px !important;
   margin-bottom: 10px !important;
   text-align: right !important;
 }
@@ -100,7 +100,7 @@ table th {
 }
 
 table td {
-  height: 100px !important;
+  height: 50px !important;
   word-wrap: break-word;
   /*white-space: pre-wrap; */
   overflow-wrap: break-word;
@@ -114,6 +114,10 @@ table td {
 
 #type_data_table .column1 {
   text-align: left !important;
+}
+
+#type_data_table td .column1 {
+  padding-left: 20px;
 }
 
 .about_title {
