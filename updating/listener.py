@@ -92,11 +92,10 @@ else:
 
     if new_changes >= 5:
         aws_api_url = "https://quf1ev88a9.execute-api.us-east-2.amazonaws.com/default/return_crystal_types"
-        Data = {
-            "type_stuff": "type",
-            "other": "other",
-        }
-        r = requests.post(aws_api_url, data=Data, headers={"Content-Type": "application/json", "origin": "null"})
+        request_payload = {"type_table": "true", "type": "none", "all_types": "false"}
+        r = requests.post(
+            aws_api_url, data=request_payload, headers={"Content-Type": "application/json", "origin": "null"}
+        )
         new_table_html = json.loads(r.content)[0]["new_type_table"]
         g = Github(os.environ["GITHUB_ACCESS_TOKEN"])
         repo = g.get_repo("rohanbansal12/testing")

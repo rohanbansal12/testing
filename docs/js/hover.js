@@ -98,4 +98,20 @@ $(document).ready(function () {
         $(this).css("cursor", "auto");
       }
     );
+
+  $("#fixed-tab-metrics")
+    .find(".column8")
+    .hover(
+      function () {
+        $(this)
+          .css("cursor", "pointer")
+          .attr(
+            "title",
+            "Adjusted unit price for crystal type, calculated as a weighted average of scarcities with the total market cap."
+          );
+      },
+      function () {
+        $(this).css("cursor", "auto");
+      }
+    );
 });
