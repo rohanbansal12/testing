@@ -11,7 +11,7 @@ import os
 import argparse
 from pathlib import Path
 import json
-from util.github_util import generate_type_table_html, update_type_table_repo
+from util.github_util import update_type_table_repo
 from util.misc_util import clean_type_entries, parse_iso_date
 from util.aws_util import update_type_table
 
@@ -96,7 +96,7 @@ else:
         r = requests.post(
             aws_api_url, data=request_payload, headers={"Content-Type": "application/json", "origin": "null"}
         )
-        new_table_html = json.loads(r.content)[0]["new_type_table"]
+        new_table_html = json.loads(r.content)["new_type_table"]
         g = Github(os.environ["GITHUB_ACCESS_TOKEN"])
         repo = g.get_repo("rohanbansal12/testing")
         commit_response = update_type_table_repo(repo, "docs/index.html", new_table_html)

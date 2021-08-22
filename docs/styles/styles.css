@@ -318,6 +318,10 @@ hr {
   align-items: center;
 }
 
+h5 {
+  font-size: 17px !important;
+}
+
 /* Phone screen */
 @media only screen and (max-width: 1575px) {
   .about_title {
