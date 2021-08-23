@@ -151,17 +151,17 @@ $(document).ready(function () {
           return data.type_entry;
         });
 
-      crystal_information.total_weight = api_response.total_weight;
-      console.log(api_response);
-      crystal_information.adjusted_price = (
-        api_response.adj_ppu *
-        crystal_information.weight *
-        0.05
-      ).toFixed(2);
+      crystal_information.weight_discrepancy =
+        (crystal_information.weight - api_response.average_weight) /
+        api_response.average_weight;
       console.log(crystal_information);
+      crystal_information.adjusted_price = (
+        (1 + crystal_information.weight_discrepancy) *
+        api_response.adj_average_price
+      ).toFixed(4);
       crystal_information.real_scarcity = api_response.real_scarcity;
       crystal_information.weight_percentage = (
-        (crystal_information.weight / crystal_information.total_weight) *
+        (crystal_information.weight / api_response.total_weight) *
         100
       ).toFixed(5);
 
